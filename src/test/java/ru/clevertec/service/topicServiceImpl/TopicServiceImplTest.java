@@ -52,25 +52,19 @@ public class TopicServiceImplTest {
     @Test
     @DisplayName("Consume message with invalid index")
     void testConsumeInvalidIndex() {
-        assertThrows(IndexOutOfBoundsException.class, () -> {
-            topic.consume(-1);
-        });
+        assertThrows(IndexOutOfBoundsException.class, () -> topic.consume(-1));
     }
 
     @Test
     @DisplayName("Publish null message")
     void testPublishNullMessage() {
-        assertThrows(NullPointerException.class, () -> {
-            topic.publish(null);
-        });
+        assertThrows(NullPointerException.class, () -> topic.publish(null));
     }
 
     @Test
     @DisplayName("Timeout while waiting for message")
     void testTimeoutWhileWaitingForMessage() {
-        assertThrows(TopicTimeoutException.class, () -> {
-            topic.consume(0);
-        });
+        assertThrows(TopicTimeoutException.class, () -> topic.consume(0));
     }
 
     @Test
@@ -102,9 +96,7 @@ public class TopicServiceImplTest {
 
         Thread.currentThread().interrupt();
 
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
-            topicSpy.consume(0);
-        });
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> topicSpy.consume(0));
 
         assertEquals("Thread was interrupted", exception.getMessage());
 
