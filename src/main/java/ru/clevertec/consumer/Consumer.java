@@ -1,4 +1,6 @@
-package ru.clevertec;
+package ru.clevertec.consumer;
+
+import ru.clevertec.entity.Message;
 
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
